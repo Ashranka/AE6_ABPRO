@@ -1,17 +1,37 @@
 package com.clases;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        TiendaElectronica tienda = new TiendaElectronica();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Crear productos
+        Televisor tv1 = new Televisor("Samsung Smart TV", 500.0, 3, "55\"", "4K UHD");  // tamañoPantalla es String, no int
+        ComputadoraPortatil laptop1 = new ComputadoraPortatil("Laptop Gamer", 1200.0, 2, "Asus", "16GB", "SN123456");  // memoriaRAM es String, no int
+        ProductoElectrodomestico microondas = new ProductoElectrodomestico("Microondas LG", 150.0, 5);
+
+        // Agregar al inventario
+        tienda.agregarProducto(tv1);
+        tienda.agregarProducto(laptop1);
+        tienda.agregarProducto(microondas);
+
+        // Mostrar inventario inicial
+        System.out.println("Inventario inicial:");
+        tienda.mostrarTodosLosProductos();
+
+        // Realizar ventas
+        System.out.println("Realizando ventas...");
+        tienda.realizarVenta("Samsung Smart TV", 1);
+        tienda.realizarVenta("Laptop Gamer", 1);
+        tienda.realizarVenta("Laptop Gamer", 1);
+        tienda.realizarVenta("Laptop Gamer", 1);
+
+        // Mostrar inventario actualizado
+        System.out.println("\nInventario actualizado:");
+        tienda.mostrarTodosLosProductos();
+
+        // Mostrar resumen final
+        System.out.println("\n=== RESUMEN FINAL ===");
+        System.out.println("Total de productos diferentes: " + tienda.getTotalProductos());
+        System.out.println("=====================");
     }
 }
